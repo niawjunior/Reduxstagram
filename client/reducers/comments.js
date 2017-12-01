@@ -8,7 +8,12 @@ function postComments(state = [], action) {
         //
         case 'REMOVE_COMMENT':
             console.log('remvoe a comment');
-            return state;
+            // we need to return the new state without the defeted comment
+            return [
+                ...state.slice(0,action.i),
+                //after the defete one, to the end
+                ...state.slice(action.i + 1)
+            ]
         default:
             return state;
     }
